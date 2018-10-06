@@ -6,7 +6,7 @@ Additions:
 
 `<CR>` sends the closing character to the next line and brings the cursor back up (with `<C-O>` so your tab settings are respected)  
 
-`<Space>` adds a matching space on the other side
+`<Space>` adds a matching space on the other side (excluding \' and \")
 
 
 **Yanked from the original vim.org page...**

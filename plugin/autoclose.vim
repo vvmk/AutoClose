@@ -68,6 +68,10 @@ function! s:IsForbidden(char)
     return l:result && l:region == 'Comment'
 endfunction
 
+function! s:MatchesClosing(char)
+    return a:char == s:charsToClose[a:char]
+endfunction
+
 function! s:InsertPair(char)
     let l:next = s:GetNextChar()
     let l:result = a:char
@@ -124,7 +128,7 @@ function! s:CarriageReturn()
 endfunction
 
 function! s:Space()
-    if s:running && s:IsEmptyPair()
+    if s:running && s:IsEmptyPair() && !s:MatchesClosing(s:GetPrevChar())
         return "\<Space>\<Space>\<Esc>i"
     endif
     return "\<Space>"

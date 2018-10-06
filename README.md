@@ -4,12 +4,13 @@
 
 Additions:
 
-`<CR>` after starting a pair will send the closing character to the next line and bring the cursor back up in insert mode (`<C-O>` is used to preserve whatever tabs you have set)
-`<Space>` after starting a pair will add a matching space on the other side
+`<CR>` sends the closing character to the next line and brings the cursor back up (with `<C-O>` so your tab settings are respected)  
 
+`<Space>` adds a matching space on the other side
+
+
+**Yanked from the original vim.org page...**
 ```
-**below yanked from vim.org**
-
 AutoClose : Auto close pair of characters
 
 created by

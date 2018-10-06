@@ -2,6 +2,12 @@
 
 ...repackaged so I could track my own changes on github and use Pathogen
 
+Additions:
+
+`<CR>` after starting a pair will send the closing character to the next line and bring the cursor back up in insert mode (`<C-O>` is used to preserve whatever tabs you have set)
+`<Space>` after starting a pair will add a matching space on the other side
+
+```
 **below yanked from vim.org**
 
 AutoClose : Auto close pair of characters
@@ -74,3 +80,4 @@ AutoComplete provide three commands that can be mapped to any key as you want to
     3. AutoCloseToggle
 
 And if you don't want to map anything, just use them on the command mode.
+```

@@ -116,6 +116,13 @@ function! s:Backspace()
     return "\<BS>"
 endfunction
 
+function! s:CarriageReturn()
+    if s:running && s:IsEmptyPair()
+        return "\<CR>\<Esc>O"
+    endif
+    return "\<CR>"
+endfunction
+
 function! s:ToggleAutoClose()
     let s:running = !s:running
     if s:running
@@ -182,6 +189,7 @@ for key in keys(s:charsToClose)
     endif
 endfor
 exec "inoremap <silent> <BS> <C-R>=<SID>SetVEAll()<CR><C-R>=<SID>Backspace()<CR><C-R>=<SID>RestoreVE()<CR>"
+exec "inoremap <silent> <CR> <C-R>=<SID>SetVEAll()<CR><C-R>=<SID>CarriageReturn()<CR><C-R>=<SID>RestoreVE()<CR>"
 
 " Define convenient commands
 command! AutoCloseOn :let s:running = 1

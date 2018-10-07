@@ -131,15 +131,16 @@ function! s:Space()
     if s:running && s:IsEmptyPair() && !s:MatchesClosing(s:GetPrevChar())
         return "\<Space>\<Space>\<Esc>i"
     endif
+    exec "normal! \<Esc>"
     return "\<Space>"
 endfunction
 
 function! s:ToggleAutoClose()
     let s:running = !s:running
     if s:running
-        echo "AutoClose ON"
+        echom "AutoClose ON"
     else
-        echo "AutoClose OFF"
+        echom "AutoClose OFF"
     endif
 endfunction
 
@@ -201,7 +202,10 @@ for key in keys(s:charsToClose)
 endfor
 exec "inoremap <silent> <BS> <C-R>=<SID>SetVEAll()<CR><C-R>=<SID>Backspace()<CR><C-R>=<SID>RestoreVE()<CR>"
 exec "inoremap <silent> <CR> <C-R>=<SID>SetVEAll()<CR><C-R>=<SID>CarriageReturn()<CR><C-R>=<SID>RestoreVE()<CR>"
-exec "inoremap <silent> <Space> <C-R>=<SID>SetVEAll()<CR><C-R>=<SID>Space()<CR><C-R>=<SID>RestoreVE()<CR>"
+" This will break space as an abbrev expander. I'm removing while i experiment
+" with using Tab/Esc instead and if I even need this to save one keystroke
+" sometimes.
+" exec "inoremap <silent> <Space> <C-R>=<SID>SetVEAll()<CR><C-R>=<SID>Space()<CR><C-R>=<SID>RestoreVE()<CR>"
 
 " Define convenient commands
 command! AutoCloseOn :let s:running = 1
